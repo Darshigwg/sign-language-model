@@ -135,7 +135,7 @@ The provided Python script (`random_forest_classifier.py`) trains a Random Fores
 - Adjust the `test_size` parameter in `train_test_split` according to your preference for the ratio of testing data.
 - Experiment with different classifiers and hyperparameters to optimize model performance.
 
-## 4.inferrence classifier(for camera GUI)
+## 4.Inferrence classifier(for camera GUI)
 
 The provided Python script (`sign_language_detection.py`) enables real-time sign language gesture detection using a pre-trained model. It utilizes the MediaPipe library for hand landmarks extraction and a Random Forest classifier for gesture classification.
 
@@ -176,6 +176,46 @@ The provided Python script (`sign_language_detection.py`) enables real-time sign
 - Ensure proper installation of OpenCV, MediaPipe, and scikit-learn and their dependencies.
 - Adjust the `min_detection_confidence` parameter in `mp_hands.Hands()` based on your confidence threshold for hand landmark detection.
 - Experiment with different classifiers and models to optimize accuracy and performance.
+
+## Real-time Sign Language Detection Streamlit App
+
+The provided Python script (`streamlit_sign_language_detection.py`) creates a real-time sign language detection app using Streamlit. It utilizes a pre-trained model for sign language gesture classification and MediaPipe library for hand landmarks extraction.
+
+### 5. APP(Streamlit Usage)
+
+1. **Prerequisites**: Ensure you have OpenCV (`pip install opencv-python`), MediaPipe (`pip install mediapipe`), Streamlit (`pip install streamlit`), and the necessary dependencies installed.
+
+2. **Running the App**:
+   - Execute the script using Python (`streamlit run streamlit_sign_language_detection.py`).
+   - Ensure the `model.p` file containing the trained classifier model is present in the specified directory.
+
+### Description
+
+- The app displays a title "Sign Language Detection Model" using Streamlit.
+- It captures the webcam feed and processes each frame for hand landmarks extraction.
+- Detected hand landmarks are used as features for classification using a pre-trained model.
+- Predicted sign language gestures are displayed in real-time at the bottom of the app.
+- The webcam feed with detected hand landmarks and predicted gestures is displayed using Streamlit.
+- Press 'q' to exit the app.
+
+### Parameters
+
+- `model_path`: Path to the pre-trained classifier model (`model.p`).
+- `frame_placeholder`: Streamlit placeholder for displaying the webcam feed.
+- `predicted_letter_placeholder`: Streamlit placeholder for displaying the predicted letter.
+- `cap`: OpenCV VideoCapture object for webcam capture.
+- `frame`: Current frame captured by the webcam.
+- `frame_height`, `frame_width`: Height and width of the frame.
+- `data_aux`: Array to store hand landmarks data for classification.
+- `results`: Detected hand landmarks from MediaPipe.
+- `prediction`: Predicted sign language gesture from the classifier model.
+- `predicted_character`: Sign language character corresponding to the predicted gesture.
+
+### Notes
+
+- Ensure proper installation of OpenCV, MediaPipe, Streamlit, and their dependencies.
+- Adjust the `min_detection_confidence` parameter in `mp_hands.Hands()` based on your confidence threshold for hand landmark detection.
+- Customize the Streamlit app layout and appearance according to your preferences.
 
 
 
