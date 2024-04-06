@@ -58,4 +58,40 @@ The provided Python script (`data_collection.py`) facilitates the collection of 
 - Adjust `dataset_size` based on your dataset requirements.
 - This script assumes a webcam is available and accessible.
 
-Feel free to modify the script or parameters according to your specific needs.
+## 2.Hand Landmarks Extraction Script
+
+The provided Python script (`hand_landmarks_extraction.py`) extracts hand landmarks from images using the MediaPipe library. It processes images of sign language gestures to extract key hand landmarks, which can be used as features for training a sign language detection model.
+
+### Usage
+
+1. **Prerequisites**: Ensure you have MediaPipe installed (`pip install mediapipe`).
+
+2. **Running the Script**:
+   - Execute the script using Python (`python hand_landmarks_extraction.py`).
+   - Ensure the `data` directory contains images of sign language gestures organized into subdirectories by class.
+
+### Description
+
+- The script initializes a MediaPipe Hands object for hand landmark detection.
+- It iterates through each image in the `data` directory and its subdirectories.
+- For each image, it reads the image and converts it to RGB format.
+- It processes the image using MediaPipe to detect hand landmarks.
+- If hand landmarks are detected, it extracts the x and y coordinates of each landmark and stores them in a list.
+- The extracted landmark coordinates are appended to the `data` list, and the corresponding class label is appended to the `labels` list.
+- Finally, it saves the extracted data and labels as a serialized pickle file (`data.pickle`).
+
+### Parameters
+
+- `DATA_DIR`: The directory containing the image data organized by class subdirectories.
+- `hands`: MediaPipe Hands object for hand landmark detection.
+- `results.multi_hand_landmarks`: Detected hand landmarks from MediaPipe.
+- `data`: List to store extracted hand landmark data.
+- `labels`: List to store corresponding class labels.
+
+### Notes
+
+- Ensure proper installation of MediaPipe and its dependencies.
+- Adjust the `min_detection_confidence` parameter in `mp_hands.Hands()` based on your confidence threshold for hand landmark detection.
+- The script assumes images are organized into class subdirectories within the `data` directory.
+
+
