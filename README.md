@@ -23,7 +23,8 @@ To get started with the project, follow these steps:
    ```bash
    git clone https://github.com/darshigwg/sign-language-model.git
 2. Navigate to the project directory
-   cd sign-language-model
+
+    cd sign-language-model
 ### File-to-run series
 ## 1. Data Collection Script
 
