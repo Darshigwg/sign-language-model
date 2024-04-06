@@ -94,4 +94,48 @@ The provided Python script (`hand_landmarks_extraction.py`) extracts hand landma
 - Adjust the `min_detection_confidence` parameter in `mp_hands.Hands()` based on your confidence threshold for hand landmark detection.
 - The script assumes images are organized into class subdirectories within the `data` directory.
 
+## 3.Training Script
+
+The provided Python script (`random_forest_classifier.py`) trains a Random Forest classifier on extracted hand landmarks data to classify sign language gestures. It utilizes the scikit-learn library for model training and evaluation.
+
+### Usage
+
+1. **Prerequisites**: Ensure you have scikit-learn installed (`pip install scikit-learn`).
+
+2. **Running the Script**:
+   - Execute the script using Python (`python random_forest_classifier.py`).
+   - Ensure the `data.pickle` file containing extracted hand landmarks and labels is present in the same directory.
+
+### Description
+
+- The script loads the extracted hand landmarks data and labels from the `data.pickle` file.
+- It pads the hand landmarks sequences to ensure uniform length for each sample.
+- It removes samples corresponding to classes with only one member, as they cannot be used for training and testing.
+- The data is split into training and testing sets using the `train_test_split` function from scikit-learn.
+- A Random Forest classifier model is initialized and trained on the training data.
+- The trained model is used to predict labels for the testing data.
+- The accuracy of the model is calculated using the `accuracy_score` function from scikit-learn.
+- The trained model is serialized and saved as a pickle file (`model.p`).
+
+### Parameters
+
+- `data.pickle`: Serialized file containing hand landmarks data and labels.
+- `max_length`: Maximum length of hand landmarks sequences after padding.
+- `class_counts`: Dictionary containing the count of occurrences of each class label.
+- `single_member_classes`: List of classes with only one member, which are removed from the dataset.
+- `x_train`, `x_test`: Features (hand landmarks data) for training and testing.
+- `y_train`, `y_test`: Labels for training and testing.
+- `model`: Random Forest classifier model.
+- `y_predict`: Predicted labels for the testing data.
+- `score`: Accuracy score of the trained model.
+
+### Notes
+
+- Ensure proper installation of scikit-learn and its dependencies.
+- Adjust the `test_size` parameter in `train_test_split` according to your preference for the ratio of testing data.
+- Experiment with different classifiers and hyperparameters to optimize model performance.
+
+
+
+
 
