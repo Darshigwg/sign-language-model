@@ -135,6 +135,51 @@ The provided Python script (`random_forest_classifier.py`) trains a Random Fores
 - Adjust the `test_size` parameter in `train_test_split` according to your preference for the ratio of testing data.
 - Experiment with different classifiers and hyperparameters to optimize model performance.
 
+## 4.inferrence classifier(for camera GUI)
+
+The provided Python script (`sign_language_detection.py`) enables real-time sign language gesture detection using a pre-trained model. It utilizes the MediaPipe library for hand landmarks extraction and a Random Forest classifier for gesture classification.
+
+### Usage
+
+1. **Prerequisites**: Ensure you have OpenCV (`pip install opencv-python`), MediaPipe (`pip install mediapipe`), and scikit-learn (`pip install scikit-learn`) installed.
+
+2. **Running the Script**:
+   - Execute the script using Python (`python sign_language_detection.py`).
+   - Ensure the `model.p` file containing the trained classifier model is present in the same directory.
+
+### Description
+
+- The script initializes a webcam capture using OpenCV.
+- It utilizes MediaPipe Hands for hand landmarks extraction from each frame.
+- Detected hand landmarks are used as features for classification.
+- A bounding box is drawn around each detected hand in the frame.
+- The extracted hand landmarks are fed into the pre-trained Random Forest classifier to predict the corresponding sign language gesture.
+- The predicted gesture is displayed in real-time at the bottom of the frame.
+- Press 'q' to exit the application.
+
+### Parameters
+
+- `cap`: OpenCV VideoCapture object for webcam capture.
+- `mp_hands`: MediaPipe Hands object for hand landmarks extraction.
+- `labels_dict`: Dictionary mapping class indices to corresponding sign language characters.
+- `frame`: Current frame captured by the webcam.
+- `frame_height`, `frame_width`: Height and width of the frame.
+- `results`: Detected hand landmarks from MediaPipe.
+- `hand_landmarks`: Detected hand landmarks in the frame.
+- `x_min`, `y_min`, `x_max`, `y_max`: Bounding box coordinates around each detected hand.
+- `data_aux`: Array to store hand landmarks data for classification.
+- `prediction`: Predicted sign language gesture from the classifier model.
+- `predicted_character`: Sign language character corresponding to the predicted gesture.
+
+### Notes
+
+- Ensure proper installation of OpenCV, MediaPipe, and scikit-learn and their dependencies.
+- Adjust the `min_detection_confidence` parameter in `mp_hands.Hands()` based on your confidence threshold for hand landmark detection.
+- Experiment with different classifiers and models to optimize accuracy and performance.
+
+
+
+
 
 
 
